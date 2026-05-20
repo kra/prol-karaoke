@@ -1,12 +1,10 @@
 # Karaoke driver
 
-# Meta-requirements
-
 # Requirements
 
-- debian box (trixie, ubuntu 23)
+- debian box (trixie, ubuntu 23) (this is my testing setup, pi or low budget laptop expected for prod)
 - Python 3.12
-- ffmpeg
+- ffmpeg, ffplay, etc
 ---
 
 # Setup
