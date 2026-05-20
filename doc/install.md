@@ -1,5 +1,3 @@
-# Karaoke driver
-
 # Requirements
 
 - debian box (trixie, ubuntu 23) (this is my testing setup, pi or low budget laptop expected for prod)

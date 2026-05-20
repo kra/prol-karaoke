@@ -1,1 +1,3 @@
-see doc/README.md
+# PROL-TV karaoke driver
+
+See doc directory.
