@@ -9,20 +9,20 @@
 
 To be done once.
 
+## Create deployment virtualenv
+
+- python3.12 -m venv venv
+- source venv/bin/activate
+- pip install -r requirements.txt
+
 ## Populate and convert media
 
 Have MP3 and CDG files in `test/media` with no subdirectories. Associated files should have same base filename with mp3 and cdg suffixes.
 
 Create MP4 files from CDG files:
 
-- python3.12 -m venv venv
-- python3 deploy/convert.py test/media/
-
-## Create deployment virtualenv
-
-- python3.12 -m venv venv
 - source venv/bin/activate
-- pip install -r requirements.txt
+- python3 deploy/convert.py test/media/
 
 ---
 
