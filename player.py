@@ -1,6 +1,5 @@
 import subprocess
 import sys
-import os
 import threading
 import time
 import socket
@@ -13,9 +12,7 @@ _current_lock = threading.Lock()
 _current_ffmpeg_process: Optional[subprocess.Popen] = None
 _stop_event = threading.Event()
 
-# Default RTSP server base URL. Can be overridden by setting the environment
-# variable RTSP_SERVER_URL to something like "rtsp://my-rtsp-server:8554".
-RTSP_SERVER_URL = os.environ.get("RTSP_SERVER_URL", "rtsp://localhost:8554")
+RTSP_SERVER_URL = "rtsp://localhost:8554"
 
 
 def _check_rtsp_server(url: str, timeout: float = 2.0) -> None:
@@ -28,7 +25,7 @@ def _check_rtsp_server(url: str, timeout: float = 2.0) -> None:
     except OSError as exc:
         raise RuntimeError(
             f"RTSP server at {host}:{port} not reachable: {exc}.\n"
-            "Start an RTSP server (e.g. rtsp-simple-server) or set RTSP_SERVER_URL"
+            "Start an RTSP server (e.g. rtsp-simple-server)."
         )
 
 
