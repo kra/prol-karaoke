@@ -56,8 +56,6 @@ def _convert_single(cdg_file: Path) -> None:
 
     print(f"Converting {cdg_file} + {audio_file} -> {mp4_file}")
 
-
-    #ffmpeg -re -i input.mp4 -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv rtmp://server_url/stream_key
     command = [
         ffmpeg,
         "-y",                   # overwrite
@@ -79,7 +77,11 @@ def _convert_single(cdg_file: Path) -> None:
         "yuv420p",
         "-c:a",                 # codec: audio
         "aac",                  # codec
+        "-ar",                  # audio sample rate
+        "44100",                # 44.1 KHz audio
         "-filter:v",            # video filter
+        #"fps=30, scale=480x360", # framerate to 30 fps, size to 480x360
+                                  # use Y scale of -1 to maintain aspect ratio
         "fps=30",               # framerate to 30 fps
         # XXX maxrate and bufsize to avoid high bitrate, but is this incompatible
         #     with -crf?
