@@ -4,6 +4,6 @@ See doc directory.
 
 # TODO
 
-Test sync, local and network player.
+Is ffplay the correct player for the pi?
 
 ffplay fails if the media is not currently streaming. Find out how to set up the server, client, or mediamtx RTSP server so that it plays a blank screen when there is no streaming.
