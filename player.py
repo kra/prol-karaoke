@@ -52,6 +52,9 @@ def play_karaoke(video_path: str) -> str:
 
     media_input = ffmpeg.input(video_path, re=None)
 
+    # pkt_size=1440 to avoid:
+    # [path video] RTP packets are too big (1460 > 1440), remuxing them into smaller ones
+    # max_muxing_queue_size=2048
     video_output = ffmpeg.output(
         media_input.video,
         media_input.audio,
@@ -59,8 +62,8 @@ def play_karaoke(video_path: str) -> str:
         format="rtsp",
         vcodec="copy",
         acodec="copy",
-        rtsp_transport="tcp",
-    )
+        pkt_size=1440,
+        rtsp_transport="udp")
 
     process = video_output.run_async(
         pipe_stderr=True,
