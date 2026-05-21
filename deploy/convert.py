@@ -73,19 +73,21 @@ def _convert_single(cdg_file: Path) -> None:
         "libx264",              # codec
         "-preset",              # encoding preset
         "veryfast",             # default medium, try fast?
-        "-crf",                 # Select the quality for constant quality mode (from -1 to FLT_MAX) (default -1)
-        "23",                   # raise for lower quality? 28?
+        #"-crf",                 # Select the quality for constant quality mode (from -1 to FLT_MAX) (default -1)
+        #"51",                   # example was 23, max 51, lower is better quality
         "-pix_fmt",             # pixel formats
         "yuv420p",
         "-c:a",                 # codec: audio
         "aac",                  # codec
-        # XXX this should also use -b:v, or only -b:v
+        "-maxrate",              # max bitrate video
+        "56k",
+        # XXX this should also use -b:v, or only -b:v?
         #     use -bufsize to avoid bitrate spikes, poss degrade video?
         #     try equal or half bitrate?
         #     -maxrate?
         # XXX Does -crf make this not valid? Use this instead of crf?
-        "-b:a",                 # bitrate video bitrate (please use -b:v) ???
-        "192k",
+        #"-b:a",                 # bitrate video bitrate (please use -b:v) ???
+        #"192k",
         "-shortest",            # finish encoding within shortest input
         str(mp4_file),
     ]
