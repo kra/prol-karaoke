@@ -1,17 +1,21 @@
 # Test
 
-## Test converter and player
+## Test converter
 
 Convert a MP4 file from a CDG file:
 
 - source venv/bin/activate
 - python3 deploy/convert.py test/media/foo.cdg
 
+Play it in ffmpeg or VLC.
+
+## Test streamer and player
+
 Start the mediamtx server:
 
 - deploy/mediamtx_v1.18.2_linux_amd64/mediamtx
 
-In another shell, start the player:
+In another shell, play the MP4 file from "Test converter", or use another mp4 file:
 
 - source venv/bin/activate
 - python3 player.py test/media/foo.mp4
