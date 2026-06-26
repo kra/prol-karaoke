@@ -7,10 +7,13 @@ from pathlib import Path
 import player
 import songlist
 
+print("initializing")
 
 song_list_html = ""
 for song in songlist.songs:
-    song_list_html += f'<div class="song-item" onclick="addToQueue(\'{song["base_name"]}\', \'{song["title"]}\')">{song["title"]}</div>\n'
+    song_list_html += f'<div class="song-item" onclick="addToQueue(\'{song["base_name"]}\', \'{song["title"]}\')">{song["video"]}</div>\n'
+
+print("built html")
 
 ui_html = """
 <!DOCTYPE html>

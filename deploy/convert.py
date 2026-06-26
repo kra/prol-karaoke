@@ -24,7 +24,10 @@ def convert_cdg(cdg_path: str) -> None:
             print(f"No CDG files found in directory: {cdg_path}")
             return
         for file_path in cdg_files:
-            _convert_single(file_path)
+            try:
+                _convert_single(file_path)
+            except Exception:
+                pass
     elif path.is_file():
         if path.suffix.lower() != ".cdg":
             raise ValueError(f"Expected a .cdg file, got: {cdg_path}")
@@ -58,7 +61,7 @@ def _convert_single(cdg_file: Path) -> None:
 
     command = [
         ffmpeg,
-        "-y",                   # overwrite
+        "-n",                   # overwrite
         "-i",
         str(cdg_file),
         "-i",

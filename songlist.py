@@ -2,8 +2,7 @@ from pathlib import Path
 
 
 MUSIC_DIR = Path(__file__).parent / "test" / "media"
-# XXX Only MP3 has been tested.
-SUPPORTED_AUDIO_EXTENSIONS = [".mp3", ".afpk", ".wav", ".flac"]
+SUPPORTED_AUDIO_EXTENSIONS = [".mp3", ".MP3"]
 
 
 def discover_songs(directory: Path) -> list[dict]:
@@ -31,13 +30,13 @@ def discover_songs(directory: Path) -> list[dict]:
 
         if audio_file:
             songs[base_name] = {
-                "title": title,
-                "video": MUSIC_DIR / file_path.name,
-                "audio": MUSIC_DIR / audio_file.name,
-                "base_name": base_name,
+                "title": title, #
+                "video": MUSIC_DIR / file_path.name, #
+                "base_name": base_name, #
             }
 
-    return sorted(songs.values(), key=lambda s: s["title"])
+    #return sorted(songs.values(), key=lambda s: s["title"])
+    return sorted(songs.values(), key=lambda s: s["video"])
 
 
 songs = discover_songs(MUSIC_DIR)
