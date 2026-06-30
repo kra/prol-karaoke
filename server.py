@@ -6,6 +6,7 @@ from pathlib import Path
 
 import player
 import songlist
+import song_list_html
 
 print("initializing")
 
