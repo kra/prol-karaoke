@@ -1,0 +1,11 @@
+[Unit]
+Description=karaoke web interface http server
+After=network.target
+
+[Service]
+WorkingDirectory=/home/proltv/code/prol-karaoke
+ExecStart=sudo -u proltv /home/proltv/code/prol-karaoke/venv/bin/python3 /home/proltv/code/prol-karaoke/server.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
